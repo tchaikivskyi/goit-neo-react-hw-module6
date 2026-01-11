@@ -1,8 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
-import type { PayloadAction } from "@reduxjs/toolkit";
-import type { Contact, ContactsState } from "@types";
 
-const initialState: ContactsState = {
+const initialState = {
   items: [
     { id: "id-1", name: "Rosie Simpson", number: "459-12-56" },
     { id: "id-2", name: "Hermione Kline", number: "443-89-12" },
@@ -15,10 +13,10 @@ const contactsSlice = createSlice({
   name: "contacts",
   initialState,
   reducers: {
-    addContact: (state, action: PayloadAction<Contact>) => {
+    addContact: (state, action) => {
       state.items.push(action.payload);
     },
-    editContact: (state, action: PayloadAction<Contact>) => {
+    editContact: (state, action) => {
       const index = state.items.findIndex(
         (contact) => contact.id === action.payload.id
       );
@@ -26,7 +24,7 @@ const contactsSlice = createSlice({
         state.items[index] = action.payload;
       }
     },
-    deleteContact: (state, action: PayloadAction<string>) => {
+    deleteContact: (state, action) => {
       state.items = state.items.filter(
         (contact) => contact.id !== action.payload
       );

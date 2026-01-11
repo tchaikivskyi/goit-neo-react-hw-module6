@@ -12,7 +12,6 @@ import {
 import storage from "redux-persist/lib/storage";
 import { contactsReducer } from "@store/contactsSlice";
 import { filtersReducer } from "@store/filtersSlice";
-import type { ContactsState } from "@types";
 
 const contactsPersistConfig = {
   key: "contacts",
@@ -20,7 +19,7 @@ const contactsPersistConfig = {
   whitelist: ["items"],
 };
 
-const persistedContactsReducer = persistReducer<ContactsState>(
+const persistedContactsReducer = persistReducer(
   contactsPersistConfig,
   contactsReducer
 );
@@ -39,4 +38,3 @@ export const store = configureStore({
 });
 
 export const persistor = persistStore(store);
-export type RootState = ReturnType<typeof store.getState>;

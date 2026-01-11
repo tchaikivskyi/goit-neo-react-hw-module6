@@ -2,12 +2,11 @@ import { useState, useEffect } from "react";
 import { useDebounce } from "use-debounce";
 import { useDispatch, useSelector } from "react-redux";
 import { changeFilter } from "@store/filtersSlice";
-import type { RootState } from "@store/store";
 import css from "./style.module.css";
 
 export default function SearchBox() {
   const dispatch = useDispatch();
-  const filter = useSelector((state: RootState) => state.filters.name);
+  const filter = useSelector((state) => state.filters.name);
 
   const [localFilter, setLocalFilter] = useState(filter);
   const [debouncedFilter] = useDebounce(localFilter, 300);
@@ -20,7 +19,7 @@ export default function SearchBox() {
     dispatch(changeFilter(debouncedFilter));
   }, [debouncedFilter, dispatch]);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e) => {
     setLocalFilter(e.target.value);
   };
 
