@@ -6,7 +6,7 @@ import { store, persistor } from "@store/store";
 import App from "@/App";
 import "@/index.css";
 
-createRoot(document.getElementById("root")!).render(
+createRoot(document.getElementById("root")).render(
   <StrictMode>
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
